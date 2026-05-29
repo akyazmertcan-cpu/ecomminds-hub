@@ -89,3 +89,85 @@ body {
     display: none;
   }
 }
+.form-box {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 600px;
+  margin-top: 20px;
+}
+
+.form-box label {
+  color: #cbd5e1;
+}
+
+.form-box input,
+.form-box select {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #334155;
+  background: #1e293b;
+  color: white;
+}
+
+.form-box button {
+  margin-top: 10px;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: #3b82f6;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.form-box button:hover {
+  background: #2563eb;
+}
+
+.result-box {
+  margin-top: 30px;
+  padding: 20px;
+  border-radius: 12px;
+  background: #1e293b;
+  border: 1px solid #334155;
+  max-width: 800px;
+}
+
+.result-box pre {
+  white-space: pre-wrap;
+  color: #e2e8f0;
+}
+
+.page-subtitle {
+  color: #94a3b8;
+  margin-bottom: 20px;
+}
+.table-box {
+  margin-top: 20px;
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.table-box table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-box th,
+.table-box td {
+  padding: 16px;
+  text-align: left;
+  border-bottom: 1px solid #334155;
+}
+
+.table-box th {
+  color: #93c5fd;
+  background: #111827;
+}
+
+.table-box td {
+  color: #e5e7eb;
+}
