@@ -1,51 +1,39 @@
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
 import './App.css'
+
+import Dashboard from './pages/Dashboard'
+import Campaigns from './pages/Campaigns'
+import AIGenerator from './pages/AIGenerator'
+import Reports from './pages/Reports'
+import Settings from './pages/Settings'
 
 function App() {
   return (
-    <div className="app">
-      <aside className="sidebar">
-        <h2>EcomMinds Hub</h2>
-        <nav>
-          <a>Dashboard</a>
-          <a>Campaigns</a>
-          <a>AI Generator</a>
-          <a>Reports</a>
-          <a>Settings</a>
-        </nav>
-      </aside>
+    <BrowserRouter>
+      <div className="app">
+        <aside className="sidebar">
+          <h2>EcomMinds Hub</h2>
 
-      <main className="main">
-        <h1>Welcome to EcomMinds Hub</h1>
-        <p>Your AI-powered advertising control center.</p>
+          <nav>
+            <Link to="/">Dashboard</Link>
+            <Link to="/campaigns">Campaigns</Link>
+            <Link to="/ai-generator">AI Generator</Link>
+            <Link to="/reports">Reports</Link>
+            <Link to="/settings">Settings</Link>
+          </nav>
+        </aside>
 
-        <div className="cards">
-          <div className="card">
-            <span>Ad Spend</span>
-            <strong>$12,430</strong>
-          </div>
-          <div className="card">
-            <span>Impressions</span>
-            <strong>1.2M</strong>
-          </div>
-          <div className="card">
-            <span>Clicks</span>
-            <strong>23,400</strong>
-          </div>
-          <div className="card">
-            <span>CTR</span>
-            <strong>3.4%</strong>
-          </div>
-          <div className="card">
-            <span>Conversions</span>
-            <strong>1,230</strong>
-          </div>
-          <div className="card">
-            <span>ROAS</span>
-            <strong>4.8x</strong>
-          </div>
-        </div>
-      </main>
-    </div>
+        <main className="main">
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/campaigns" element={<Campaigns />} />
+            <Route path="/ai-generator" element={<AIGenerator />} />
+            <Route path="/reports" element={<Reports />} />
+            <Route path="/settings" element={<Settings />} />
+          </Routes>
+        </main>
+      </div>
+    </BrowserRouter>
   )
 }
 
