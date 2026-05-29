@@ -6,6 +6,7 @@ import Campaigns from './pages/Campaigns'
 import AIGenerator from './pages/AIGenerator'
 import Reports from './pages/Reports'
 import Settings from './pages/Settings'
+import Auth from './pages/Auth'
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Link to="/ai-generator">AI Generator</Link>
             <Link to="/reports">Reports</Link>
             <Link to="/settings">Settings</Link>
+            <Link to="/auth">Login</Link>
           </nav>
         </aside>
 
@@ -30,6 +32,7 @@ function App() {
             <Route path="/ai-generator" element={<AIGenerator />} />
             <Route path="/reports" element={<Reports />} />
             <Route path="/settings" element={<Settings />} />
+            <Route path="/auth" element={<Auth />} />
           </Routes>
         </main>
       </div>
