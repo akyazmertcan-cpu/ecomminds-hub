@@ -171,3 +171,42 @@ body {
 .table-box td {
   color: #e5e7eb;
 }
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.user-box {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #334155;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.user-box span {
+  color: #94a3b8;
+  font-size: 13px;
+}
+
+.user-box strong {
+  color: #e5e7eb;
+  font-size: 13px;
+  word-break: break-all;
+}
+
+.user-box button {
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background: #ef4444;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.user-box button:hover {
+  background: #dc2626;
+}
