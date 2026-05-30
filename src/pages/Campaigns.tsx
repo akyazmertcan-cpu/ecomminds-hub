@@ -76,6 +76,27 @@ function Campaigns() {
     fetchCampaigns()
   }
 
+  async function deleteCampaign(id: number) {
+    const { data, error } = await supabase
+      .from('campaigns')
+      .delete()
+      .eq('id', id)
+      .select()
+
+    if (error) {
+      setMessage(error.message)
+      return
+    }
+
+    if (!data || data.length === 0) {
+      setMessage('No campaign was deleted. Check DELETE policy.')
+      return
+    }
+
+    setMessage('Campaign deleted successfully.')
+    fetchCampaigns()
+  }
+
   function getClientName(clientId: number) {
     const client = clients.find((client) => client.id === clientId)
     return client ? client.name : 'Unknown Client'
@@ -92,10 +113,7 @@ function Campaigns() {
       <p className="page-subtitle">Create and manage campaigns by client.</p>
 
       <div className="form-box">
-        <select
-          value={clientId}
-          onChange={(e) => setClientId(e.target.value)}
-        >
+        <select value={clientId} onChange={(e) => setClientId(e.target.value)}>
           <option value="">Select client</option>
           {clients.map((client) => (
             <option key={client.id} value={client.id}>
@@ -110,10 +128,7 @@ function Campaigns() {
           onChange={(e) => setCampaignName(e.target.value)}
         />
 
-        <select
-          value={platform}
-          onChange={(e) => setPlatform(e.target.value)}
-        >
+        <select value={platform} onChange={(e) => setPlatform(e.target.value)}>
           <option value="">Select platform</option>
           <option value="Meta Ads">Meta Ads</option>
           <option value="Google Ads">Google Ads</option>
@@ -134,6 +149,7 @@ function Campaigns() {
               <th>Campaign</th>
               <th>Platform</th>
               <th>Created</th>
+              <th>Action</th>
             </tr>
           </thead>
 
@@ -144,6 +160,14 @@ function Campaigns() {
                 <td>{campaign.name}</td>
                 <td>{campaign.platform}</td>
                 <td>{new Date(campaign.created_at).toLocaleString()}</td>
+                <td>
+                  <button
+                    className="delete-button"
+                    onClick={() => deleteCampaign(campaign.id)}
+                  >
+                    Delete
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>
