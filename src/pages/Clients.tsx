@@ -43,6 +43,27 @@ function Clients() {
     fetchClients()
   }
 
+  async function deleteClient(id: number) {
+  const { data, error } = await supabase
+    .from('clients')
+    .delete()
+    .eq('id', id)
+    .select()
+
+  if (error) {
+    setMessage(error.message)
+    return
+  }
+
+  if (!data || data.length === 0) {
+    setMessage('Delete request worked, but no client was deleted. Check RLS delete policy.')
+    return
+  }
+
+  setMessage('Client deleted successfully.')
+  fetchClients()
+}
+
   useEffect(() => {
     fetchClients()
   }, [])
@@ -70,6 +91,7 @@ function Clients() {
             <tr>
               <th>Client Name</th>
               <th>Created At</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
@@ -77,6 +99,14 @@ function Clients() {
               <tr key={client.id}>
                 <td>{client.name}</td>
                 <td>{new Date(client.created_at).toLocaleString()}</td>
+                <td>
+                  <button
+                    className="delete-button"
+                    onClick={() => deleteClient(client.id)}
+                  >
+                    Delete
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>

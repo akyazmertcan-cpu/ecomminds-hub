@@ -210,3 +210,16 @@ body {
 .user-box button:hover {
   background: #dc2626;
 }
+.delete-button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  background: #ef4444;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.delete-button:hover {
+  background: #dc2626;
+}
